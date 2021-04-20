@@ -9,11 +9,9 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./app:/app
-      - /app/node_modules
-      - /app/.cache
+      - ./app/src:/app/src
     environment:
       - NODE_ENV=development
       - GATSBY_WEBPACK_PUBLICPATH=/ # https://blog.konnor.site/javascript/setting-up-gatsby-with-docker/
       - GATSBY_TELEMETRY_DISABLED=1 # https://clubmate.fi/disable-gatsby-telemetry
-    # command: npm run gatsby-develop
+    command: ["yarn", "run", "gatsby-develop" ]

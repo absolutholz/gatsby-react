@@ -1,4 +1,6 @@
 .dockerignore
-
-/app/node_modules
-/app/.cache
+node_modules
+npm-debug.log
+**/.git
+**/.DS_Store
+**/node_modules
