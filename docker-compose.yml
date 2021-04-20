@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  gatsby:
+    container_name: gatsby
+    build:
+      context: .
+      dockerfile: ./docker-config/gatsby/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+      - /app/.cache
+    environment:
+      - NODE_ENV=development
+      - GATSBY_WEBPACK_PUBLICPATH=/ # https://blog.konnor.site/javascript/setting-up-gatsby-with-docker/
+      - GATSBY_TELEMETRY_DISABLED=1 # https://clubmate.fi/disable-gatsby-telemetry
+    # command: npm run gatsby-develop

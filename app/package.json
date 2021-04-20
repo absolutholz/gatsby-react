@@ -36,7 +36,7 @@
     "react-build": "react-scripts build",
     "react-test": "react-scripts test",
     "react-eject": "react-scripts eject",
-    "gatsby-develop": "gatsby develop",
+    "gatsby-develop": "gatsby develop -H 0.0.0.0",
     "gatsby-start": "gatsby develop",
     "gatsby-build": "gatsby build",
     "gatsby-serve": "gatsby serve",
