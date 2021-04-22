@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   gatsby:
     container_name: gatsby
     build:
@@ -14,4 +15,19 @@ services:
       - NODE_ENV=development
       - GATSBY_WEBPACK_PUBLICPATH=/ # https://blog.konnor.site/javascript/setting-up-gatsby-with-docker/
       - GATSBY_TELEMETRY_DISABLED=1 # https://clubmate.fi/disable-gatsby-telemetry
-    command: ["yarn", "run", "gatsby-develop" ]
+    command: ["yarn", "gatsby-develop" ]
+    # command: ["tail", "-f", "/dev/null"]
+
+  storybook:
+    container_name: storybook
+    build:
+      context: .
+      dockerfile: ./docker-config/storybook/Dockerfile
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./app/src:/app/src
+      - ./app/public:/app/public
+      - ./app/.storybook:/app/.storybook
+    command: ["yarn", "storybook-develop" ]
+    # command: ["tail", "-f", "/dev/null"]
